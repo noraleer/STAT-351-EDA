@@ -5,10 +5,7 @@ date: "`r Sys.Date()`"
 output: html_document
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
+This datafile is about the success of math students based on a set of input variables. The binary predictors are school, sex, address, famsize, Pstatus, schoolsup, famsup, paid, activities, nursery, higher, internet, romantic. The categorical predictors are Medu, Fedu, Mjob, Fjob, reason, guardian, traveltime, studytime. The numeric variables are failures, absences. The target variable is G4 which is a categorical variable to indicate a student’s success. There are 31 predictors and 273 values of each. There are no NAs.
 
 ```{r}
 library(tidyverse)
