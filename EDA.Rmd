@@ -31,6 +31,7 @@ mathscores %>%
   geom_bar(fill = "purple") +
   ggtitle('Age of Students')
 ```
+The age of students ranges from 15 to 22 and the distribution is right skewed.
 ```{r}
 summary(mathscores$failures)
 
@@ -40,6 +41,8 @@ mathscores %>%
   geom_bar(fill = "hotpink") +
   ggtitle('Number of Failures')
 ```
+The majority of students have 0 failures. Less than 50 students have one failure. 
+
 ```{r}
 summary(mathscores$absences)
 
@@ -49,7 +52,7 @@ mathscores %>%
   ggtitle('Number of Absences')
 
 ```
-
+This distribution of absences is positively skewed. There are several outliers with high numbers of absences but the most common number of absences is 0.
 ```{r}
 table(mathscores$sex)
 
@@ -57,7 +60,9 @@ mathscores %>%
   ggplot(aes(x = sex)) + 
   geom_bar(fill = "skyblue") +
   ggtitle('Number of Sexes')
+
 ```
+There are more female students in the data set than males. About 53.8% of the students are female.
 ```{r}
 table(mathscores$address)
 
@@ -67,7 +72,7 @@ mathscores %>%
   geom_bar(fill = "lavender") +
   ggtitle('Number of adress types')
 ```
-
+There are more students with urban addresses than rural addresses. Only 20.1% of the students have rural addresses.
 ```{r}
 table(mathscores$school)
 
