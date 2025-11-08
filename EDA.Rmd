@@ -77,12 +77,12 @@ There are more students with urban addresses than rural addresses. Only 20.1% of
 table(mathscores$school)
 
 mathscores %>% 
-  ggplot(aes(x = address)) + 
+  ggplot(aes(x = school)) + 
   geom_bar(fill = "blue") +
   ggtitle('Number of school types')
 
 ```
-
+The majority of students attend school A. Only about 11.4% of the students are from school B.
 ```{r}
 table(mathscores$reason)
 
@@ -92,6 +92,7 @@ mathscores %>%
   ggtitle('Reasons for choosing school')
 
 ```
+The most popular reason for choosing a school was the courses offered and the reputation and it being close to home had similar results to eachother.
 ```{r}
 table(mathscores$activities)
 
@@ -100,7 +101,7 @@ mathscores %>%
   geom_bar(fill = "red") +
   ggtitle('extracurricular activities?')
 ```
-
+The number of students in activities is close to the number of students not in activities. There is one more student who is not in activities.
 ```{r}
 table(mathscores$schoolsup)
 
@@ -109,7 +110,7 @@ mathscores %>%
   geom_bar(fill = "brown") +
   ggtitle('Extra School Support?')
 ```
-
+The majority of students do not have addition educational support. 
 ```{r}
 table(mathscores$famsup)
 
