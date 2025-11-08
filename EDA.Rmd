@@ -1,0 +1,156 @@
+---
+title: "EDA"
+author: "Nora Lee Reinhardt"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r}
+library(tidyverse)
+
+mathscores <- read.csv("MathScores.csv")
+
+view(head(mathscores))
+
+
+```
+
+
+```{r}
+summary(mathscores)
+```
+
+
+```{r}
+summary(mathscores$age)
+
+mathscores %>% 
+  ggplot(aes(x = age)) + 
+  geom_bar(fill = "purple") +
+  ggtitle('Age of Students')
+```
+```{r}
+summary(mathscores$failures)
+
+
+mathscores %>% 
+  ggplot(aes(x = failures)) + 
+  geom_bar(fill = "hotpink") +
+  ggtitle('Number of Failures')
+```
+```{r}
+summary(mathscores$absences)
+
+mathscores %>% 
+  ggplot(aes(x = absences)) + 
+  geom_bar(fill = "limegreen") +
+  ggtitle('Number of Absences')
+
+```
+
+```{r}
+table(mathscores$sex)
+
+mathscores %>% 
+  ggplot(aes(x = sex)) + 
+  geom_bar(fill = "skyblue") +
+  ggtitle('Number of Sexes')
+```
+```{r}
+table(mathscores$address)
+
+
+mathscores %>% 
+  ggplot(aes(x = address)) + 
+  geom_bar(fill = "lavender") +
+  ggtitle('Number of adress types')
+```
+
+```{r}
+table(mathscores$school)
+
+mathscores %>% 
+  ggplot(aes(x = address)) + 
+  geom_bar(fill = "blue") +
+  ggtitle('Number of school types')
+
+```
+
+```{r}
+table(mathscores$reason)
+
+mathscores %>% 
+  ggplot(aes(x = reason)) + 
+  geom_bar(fill = "yellow") +
+  ggtitle('Reasons for choosing school')
+
+```
+```{r}
+table(mathscores$activities)
+
+mathscores %>% 
+  ggplot(aes(x = activities)) + 
+  geom_bar(fill = "red") +
+  ggtitle('extracurricular activities?')
+```
+
+```{r}
+table(mathscores$schoolsup)
+
+mathscores %>% 
+  ggplot(aes(x = schoolsup)) + 
+  geom_bar(fill = "brown") +
+  ggtitle('Extra School Support?')
+```
+
+```{r}
+table(mathscores$famsup)
+
+mathscores %>% 
+  ggplot(aes(x = famsup)) + 
+  geom_bar(fill = "magenta") +
+  ggtitle('Family School Support?')
+```
+
+```{r}
+table(mathscores$paid)
+
+mathscores %>% 
+  ggplot(aes(x = paid)) + 
+  geom_bar(fill = "cyan3") +
+  ggtitle('Extra Paid Classes?')
+
+```
+
+```{r}
+table(mathscores$traveltime)
+
+mathscores %>% 
+  ggplot(aes(x = traveltime)) + 
+  geom_bar(fill = "orange") +
+  ggtitle('Travel Time:')
+```
+```{r}
+table(mathscores$studytime)
+
+
+mathscores %>% 
+  ggplot(aes(x = studytime)) +
+  geom_bar(fill = "yellowgreen") + 
+  ggtitle('Weekly Study Time')
+```
+
+```{r}
+table(mathscores$freetime)
+
+mathscores %>% 
+  ggplot(aes(x = freetime)) + 
+  geom_bar(fill = "lightsalmon") +
+  ggtitle('Free Time after School')
+```
+
