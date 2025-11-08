@@ -22,7 +22,7 @@ view(head(mathscores))
 summary(mathscores)
 ```
 
-
+First we analyzed the response variable. About 11.7% of the students in the dataset had a student success result of excellent.  9.2% of students had fail, 37% had needs improvement and 42.1% had satisfactory.
 ```{r}
 summary(mathscores$age)
 
