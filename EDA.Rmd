@@ -31,7 +31,7 @@ mathscores %>%
   geom_bar(fill = "purple") +
   ggtitle('Age of Students')
 ```
-The age of students ranges from 15 to 22 and the distribution is right skewed.
+The age of students ranges from 15 to 22 and the distribution is right skewed. The median age being 17 and mean being 16.66
 ```{r}
 summary(mathscores$failures)
 
@@ -41,7 +41,7 @@ mathscores %>%
   geom_bar(fill = "hotpink") +
   ggtitle('Number of Failures')
 ```
-The majority of students have 0 failures. Less than 50 students have one failure. 
+The majority of students have 0 failures. Less than 50 students have one failure. Mean of 0.304, median of 0 
 
 ```{r}
 summary(mathscores$absences)
@@ -119,7 +119,7 @@ mathscores %>%
   geom_bar(fill = "magenta") +
   ggtitle('Family School Support?')
 ```
-
+Most students have family educational support 178 do and 95 don't
 ```{r}
 table(mathscores$paid)
 
@@ -130,6 +130,7 @@ mathscores %>%
 
 ```
 
+A little less than half of the students have extra paid classes within the math subject area (126 yes, 147 no).
 ```{r}
 table(mathscores$traveltime)
 
@@ -138,6 +139,8 @@ mathscores %>%
   geom_bar(fill = "orange") +
   ggtitle('Travel Time:')
 ```
+
+There are 4 categories 1 = less than 15 mins, 2 = 15 to 30 minutes, 3 = 30 to 60 minutes and 4 = more than an hour. The majority of students take less than 15 minutes to get to class and only a few take more than an hour
 ```{r}
 table(mathscores$studytime)
 
@@ -147,7 +150,7 @@ mathscores %>%
   geom_bar(fill = "yellowgreen") + 
   ggtitle('Weekly Study Time')
 ```
-
+Weekly study time is also split into 4 categories: 1 = less than 2 hours, 2 = 2 to 5 hours, 3 = 5 to 10 hours, 4 = more than 10 hours.  Most of the students study between 2 and 5 hours but alot also study for less than 2
 ```{r}
 table(mathscores$freetime)
 
@@ -157,3 +160,4 @@ mathscores %>%
   ggtitle('Free Time after School')
 ```
 
+Lastly, free time after school is on a scale of 1 to 5 with 1 being very low amount of free time and 5 being very high amount of free time. About a third of students answered 3, meaning they have average free time after school. The least amount of people answered 1 and the most answered 3 this might not be accurate because we don't know the numbers behind them.
