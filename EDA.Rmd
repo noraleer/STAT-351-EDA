@@ -9,6 +9,7 @@ This datafile is about the success of math students based on a set of input vari
 
 ```{r}
 library(tidyverse)
+library(tree)
 
 mathscores <- read.csv("MathScores.csv")
 
@@ -163,3 +164,40 @@ mathscores %>%
 Lastly, free time after school is on a scale of 1 to 5 with 1 being very low amount of free time and 5 being very high amount of free time. About a third of students answered 3, meaning they have average free time after school. The least amount of people answered 1 and the most answered 3 this might not be accurate because we don't know the numbers behind them.
 
 In conclusion, there are both numerical and categorical variable that could help us predict a student's success in math class and building the model to do this. We should start by building a tree with variables with the "important" variables. We would also make a full model with all the variables without over fitting. A nonparametirc model might be better using this data because some of the variables have non normal distributions or they have outliers. 
+
+
+
+
+
+
+
+```{r}
+
+mathscores <- mathscores %>%  select(-ID)
+math_idx = sample(1:nrow(mathscores),nrow(mathscores)*.7)
+mathtrain <- mathscores[math_idx,]
+mathtest <- mathscores[-math_idx,]
+
+table(mathtest$G4)
+
+table(mathtrain$G4)
+
+
+mathtrain$G4 <- as.factor(mathtrain$G4)
+mathtest$G4  <- as.factor(mathtest$G4)
+
+
+
+math_tree1 <- tree(G4 ~ ., data = mathtrain)
+summary(math_tree1)
+plot(math_tree1)
+text(math_tree1, pretty = 1)
+```
+```{r}
+math_pred <- predict(math_tree1, newdata = mathtrain, type = "class")
+math_cm <- table(Predicted = math_pred, Actual = mathtrain$G4)
+train_acc <- mean(math_pred == mathtrain$G4)
+math_cm
+train_acc
+```
+
