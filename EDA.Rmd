@@ -173,7 +173,34 @@ In conclusion, there are both numerical and categorical variable that could help
 
 ```{r}
 
-mathscores <- mathscores %>%  select(-ID)
+#mathscores <- mathscores %>%  select(-ID)
+mathscores$school = as.factor(mathscores$school)
+mathscores$sex = as.factor(mathscores$sex)
+mathscores$address = as.factor(mathscores$address)
+mathscores$famsize = as.factor(mathscores$famsize)
+mathscores$Pstatus = as.factor(mathscores$Pstatus)
+mathscores$Mjob = as.factor(mathscores$Mjob)
+mathscores$Fjob = as.factor(mathscores$Fjob)
+mathscores$reason = as.factor(mathscores$reason)
+mathscores$guardian = as.factor(mathscores$guardian)
+mathscores$activities = as.factor(mathscores$activities)
+mathscores$schoolsup = as.factor(mathscores$schoolsup)
+mathscores$famsup = as.factor(mathscores$famsup)
+mathscores$paid = as.factor(mathscores$paid)
+mathscores$activities = as.factor(mathscores$activities)
+mathscores$nursery = as.factor(mathscores$nursery)
+mathscores$higher = as.factor(mathscores$higher)
+mathscores$internet = as.factor(mathscores$internet)
+mathscores$romantic = as.factor(mathscores$romantic)
+mathscores$traveltime = as.factor(mathscores$traveltime)
+mathscores$studytime = as.factor(mathscores$studytime)
+mathscores$freetime = as.factor(mathscores$freetime)
+
+
+
+
+
+
 math_idx = sample(1:nrow(mathscores),nrow(mathscores)*.7)
 mathtrain <- mathscores[math_idx,]
 mathtest <- mathscores[-math_idx,]
@@ -199,5 +226,8 @@ math_cm <- table(Predicted = math_pred, Actual = mathtrain$G4)
 train_acc <- mean(math_pred == mathtrain$G4)
 math_cm
 train_acc
+
+testpred1 = predict(math_tree1, newdata = mathtest)
+
 ```
 
