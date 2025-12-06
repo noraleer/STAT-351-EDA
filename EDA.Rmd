@@ -230,4 +230,26 @@ train_acc
 testpred1 = predict(math_tree1, newdata = mathtest)
 
 ```
+```{r}
+library(tree)
+
+# 1. Fit initial tree
+math_tree1 <- tree(G4 ~ ., data = mathtrain)
+
+# 2. Cross-validation for optimal size
+set.seed(1)
+cv_math <- cv.tree(math_tree1, FUN = prune.tree)
+
+# Visualize CV results
+plot(cv_math$size, cv_math$dev, type = "b",
+     xlab = "Tree Size", ylab = "Deviance (CV Error)")
+
+# 3. Prune to optimal size
+best_size <- cv_math$size[which.min(cv_math$dev)]
+pruned_math_tree <- prune.tree(math_tree1, best = best_size)
+
+# 4. Plot pruned tree
+plot(pruned_math_tree)
+text(pruned_math_tree, pretty = 1)
+```
 
