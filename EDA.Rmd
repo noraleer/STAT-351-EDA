@@ -174,13 +174,16 @@ In conclusion, there are both numerical and categorical variable that could help
 ```{r}
 
 #mathscores <- mathscores %>%  select(-ID)
+#mathscores <- mathscores %>%  select(-Mjob)
+#mathscores <- mathscores %>%  select(-Fjob)
+mathscores <- mathscores %>%  select(-Medu, -Fedu)
 mathscores$school = as.factor(mathscores$school)
 mathscores$sex = as.factor(mathscores$sex)
 mathscores$address = as.factor(mathscores$address)
 mathscores$famsize = as.factor(mathscores$famsize)
 mathscores$Pstatus = as.factor(mathscores$Pstatus)
-mathscores$Mjob = as.factor(mathscores$Mjob)
-mathscores$Fjob = as.factor(mathscores$Fjob)
+#mathscores$Mjob = as.factor(mathscores$Mjob)
+#mathscores$Fjob = as.factor(mathscores$Fjob)
 mathscores$reason = as.factor(mathscores$reason)
 mathscores$guardian = as.factor(mathscores$guardian)
 mathscores$activities = as.factor(mathscores$activities)
@@ -229,8 +232,9 @@ math_cm
 train_acc
 
 testpred1 = predict(math_tree1, newdata = mathtest)
-
+table()
 ```
+
 ```{r}
 library(tree)
 
@@ -337,11 +341,14 @@ printcp(mathrpart)
 rpart.plot(mathrpart)
 
 
-mathrpart2 <- rpart(G4 ~ ., data = mathtrain, cp = 0.035398)
+mathrpart2 <- rpart(G4 ~ ., data = mathtrain, cp = 0.0307018)
 
 printcp(mathrpart2)
 
 rpart.plot(mathrpart2)
+
+pred <- predict(mathrpart2, newdata = mathtest, type = "class")
+table(Predicted = pred, Actual = mathtest$G4)
 
 ```
 
