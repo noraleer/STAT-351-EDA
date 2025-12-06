@@ -324,3 +324,24 @@ table(Predicted = pred, Actual = mathtest$G4)
 
 ```
 
+```{r}
+library(rpart)
+library(rpart.plot)
+set.seed(67)
+#overfitted tree
+mathrpart <- rpart(G4 ~ ., data = mathtrain, cp = 10^(-5))
+#predict(titanic_tree1)
+
+printcp(mathrpart)
+
+rpart.plot(mathrpart)
+
+
+mathrpart2 <- rpart(G4 ~ ., data = mathtrain, cp = 0.035398)
+
+printcp(mathrpart2)
+
+rpart.plot(mathrpart2)
+
+```
+
