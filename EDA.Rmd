@@ -297,5 +297,8 @@ boostmath <- gbm(G4 ~ ., data = mathtrain, distribution = "multinomial", n.trees
 
 
 summary(boostmath)
+
+predictboost = predict(boostmath, newdata = mathtest, type = "class")
+table(Predicted = boostmath, Actual = mathtest$G4)
 ```
 
