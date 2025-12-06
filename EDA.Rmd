@@ -282,5 +282,8 @@ plot(mathscoresrf1)
 
 str(mathscoresrf1)
 varImpPlot(mathscoresrf1)
+
+predictforest = predict(mathscoresrf1, newdata = mathtest, type = "class")
+table(Predicted = predictforest, Actual = mathtest$G4)
 ```
 
