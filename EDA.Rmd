@@ -298,7 +298,8 @@ boostmath <- gbm(G4 ~ ., data = mathtrain, distribution = "multinomial", n.trees
 
 summary(boostmath)
 
-predictboost = predict(boostmath, newdata = mathtest, type = "class")
-table(Predicted = boostmath, Actual = mathtest$G4)
+predictboost = predict(boostmath, newdata = mathtest, n.trees = 1000 ,type = "response")
+pred.class <- colnames(predictboost)[apply(predictboost, 1, which.max)]
+table(Predicted = pred.class, Actual = mathtest$G4)
 ```
 
