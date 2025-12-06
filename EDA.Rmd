@@ -316,11 +316,11 @@ ofit <- ordfor(
 
 summary(ofit)
 
-plot(ofit)
+#plot(ofit)
 
 
-pred <- predict(ofit, newdata = math_test, type = "class")
-table(Predicted = pred, Actual = math_test$G4)
+pred <- predict(ofit, newdata = mathtest, type = "class")
+table(Predicted = pred, Actual = mathtest$G4)
 
 ```
 
