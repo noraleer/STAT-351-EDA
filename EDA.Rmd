@@ -257,3 +257,30 @@ predict1 = predict(pruned_math_tree, newdata = mathtest, type = "class")
 table(Predicted = predict1,Actual = mathtest$G4)
 ```
 
+```{r}
+library(randomForest)
+
+mathscoresrf <- randomForest(G4 ~ ., data = mathtrain)
+
+
+mathscoresrf
+plot(mathscoresrf)
+
+plot(mathscoresrf$err.rate[, "OOB"], 
+     type = "l", 
+     xlab = "Number of Trees", 
+     ylab = "OOB Error Rate", 
+     main = "Out-of-Bag Error vs. Number of Trees")
+
+#optimal oob i think is around 100 trees
+
+mathscoresrf1 <- randomForest(G4 ~ ., data = mathtrain, ntree = 100)
+
+mathscoresrf1
+
+plot(mathscoresrf1)
+
+str(mathscoresrf1)
+varImpPlot(mathscoresrf1)
+```
+
