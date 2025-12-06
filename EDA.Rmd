@@ -303,3 +303,24 @@ pred.class <- colnames(predictboost)[apply(predictboost, 1, which.max)]
 table(Predicted = pred.class, Actual = mathtest$G4)
 ```
 
+```{r}
+library(ordinalForest)
+
+ofit <- ordfor(
+    depvar = "G4",
+    data = mathtrain,
+    nsets = 500,
+    ntreeperdiv = 100,
+    ntreefinal = 2000
+)
+
+summary(ofit)
+
+plot(ofit)
+
+
+pred <- predict(ofit, newdata = math_test, type = "class")
+table(Predicted = pred, Actual = math_test$G4)
+
+```
+
