@@ -224,16 +224,6 @@ plot(math_tree1)
 text(math_tree1, pretty = 1)
 ```
 
-```{r}
-math_pred <- predict(math_tree1, newdata = mathtrain, type = "class")
-math_cm <- table(Predicted = math_pred, Actual = mathtrain$G4)
-train_acc <- mean(math_pred == mathtrain$G4)
-math_cm
-train_acc
-
-testpred1 = predict(math_tree1, newdata = mathtest)
-table()
-```
 
 ```{r}
 library(tree)
@@ -295,8 +285,6 @@ table(Predicted = predictforest, Actual = mathtest$G4)
 library(gbm)
 set.seed (67)
 
-
-
 boostmath <- gbm(G4 ~ ., data = mathtrain, distribution = "multinomial", n.trees = 1000, shrinkage = 0.01)
 
 
@@ -337,11 +325,11 @@ mathrpart <- rpart(G4 ~ ., data = mathtrain, cp = 10^(-5))
 #predict(titanic_tree1)
 
 printcp(mathrpart)
-
+best_cp <- mathrpart$cptable[which.min(mathrpart$cptable[, "xerror"]), "CP"]
 rpart.plot(mathrpart)
 
 
-mathrpart2 <- rpart(G4 ~ ., data = mathtrain, cp = 0.017699)
+mathrpart2 <- rpart(G4 ~ ., data = mathtrain, cp = best_cp)
 
 printcp(mathrpart2)
 
