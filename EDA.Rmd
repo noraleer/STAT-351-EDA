@@ -341,7 +341,7 @@ printcp(mathrpart)
 rpart.plot(mathrpart)
 
 
-mathrpart2 <- rpart(G4 ~ ., data = mathtrain, cp = 0.0307018)
+mathrpart2 <- rpart(G4 ~ ., data = mathtrain, cp = 0.017699)
 
 printcp(mathrpart2)
 
