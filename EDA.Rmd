@@ -220,6 +220,7 @@ summary(math_tree1)
 plot(math_tree1)
 text(math_tree1, pretty = 1)
 ```
+
 ```{r}
 math_pred <- predict(math_tree1, newdata = mathtrain, type = "class")
 math_cm <- table(Predicted = math_pred, Actual = mathtrain$G4)
@@ -251,5 +252,8 @@ pruned_math_tree <- prune.tree(math_tree1, best = best_size)
 # 4. Plot pruned tree
 plot(pruned_math_tree)
 text(pruned_math_tree, pretty = 1)
+
+predict1 = predict(pruned_math_tree, newdata = mathtest, type = "class")
+table(Predicted = predict1,Actual = mathtest$G4)
 ```
 
