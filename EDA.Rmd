@@ -287,3 +287,15 @@ predictforest = predict(mathscoresrf1, newdata = mathtest, type = "class")
 table(Predicted = predictforest, Actual = mathtest$G4)
 ```
 
+```{r}
+library(gbm)
+set.seed (67)
+
+
+
+boostmath <- gbm(G4 ~ ., data = mathtrain, distribution = "multinomial", n.trees = 1000, shrinkage = 0.01)
+
+
+summary(boostmath)
+```
+
