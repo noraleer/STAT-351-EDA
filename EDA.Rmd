@@ -176,7 +176,7 @@ In conclusion, there are both numerical and categorical variable that could help
 #mathscores <- mathscores %>%  select(-ID)
 #mathscores <- mathscores %>%  select(-Mjob)
 #mathscores <- mathscores %>%  select(-Fjob)
-mathscores <- mathscores %>%  select(-Medu, -Fedu)
+#mathscores <- mathscores %>%  select(-Medu, -Fedu)
 mathscores$school = as.factor(mathscores$school)
 mathscores$sex = as.factor(mathscores$sex)
 mathscores$address = as.factor(mathscores$address)
